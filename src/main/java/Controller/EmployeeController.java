@@ -28,7 +28,7 @@ public class EmployeeController {
     public void addEmployee(@RequestBody Employee employee) {
         employeeRepository.save(employee);
     }
-
+//
     @PutMapping("/{employeeId}")
     public void updateEmployee(@PathVariable int employeeId, @RequestBody Employee updatedEmployee) {
         Employee existingEmployee = employeeRepository.findById(employeeId).orElse(null);
