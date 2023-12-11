@@ -14,8 +14,8 @@ public class Library implements LibraryPolicy{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idLibrary;
 
-    @OneToOne(mappedBy = "library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Librarian librarian;
+    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Employee> employees = new ArrayList<>();
     @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Book> books = new ArrayList<>();
     @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -25,13 +25,16 @@ public class Library implements LibraryPolicy{
 
     private static Library instance;
 
-
-    public Library(Librarian librarian) {
-        this.librarian = librarian;
-    }
-
     public Library() {
         //default constructor for JPA
+    }
+
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
+        employee.setLibrary(this);
+    }
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
     public void setLibraryPolicy(LibraryPolicy libraryPolicy) {

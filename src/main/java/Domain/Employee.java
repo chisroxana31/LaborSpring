@@ -1,10 +1,7 @@
 package Domain;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Employee implements Person{
@@ -13,6 +10,13 @@ public class Employee implements Person{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int idEmployee;
     public String Name;
+
+    @ManyToOne
+    @JoinColumn(name = "library_id")
+    private Library library;
+
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Librarian librarian;
 
     public Employee(int idEmployee, String name) {
         this.idEmployee = idEmployee;
@@ -39,5 +43,22 @@ public class Employee implements Person{
     @Override
     public String getName() {
         return null;
+    }
+
+    public void setLibrary(Library library) {
+        this.library = library;
+        if (!library.getEmployees().contains(this)) {
+            library.addEmployee(this);
+        }
+    }
+    public Librarian getLibrarian() {
+        return librarian;
+    }
+
+    public void setLibrarian(Librarian librarian) {
+        this.librarian = librarian;
+        if (librarian != null) {
+            librarian.setEmployee(this);
+        }
     }
 }

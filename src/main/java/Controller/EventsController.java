@@ -34,4 +34,19 @@ public class EventsController {
         return eventsRepository.findByName(name);
     }
 
+    @DeleteMapping("/{eventId}")
+    public void deleteEvent(@PathVariable Long eventId) {
+        eventsRepository.deleteById(eventId);
+    }
+
+    @PutMapping("/{eventId}")
+    public Events updateEvent(@PathVariable Long eventId, @RequestBody Events updatedEvent) {
+        return eventsRepository.findById(eventId)
+                .map(event -> {
+                    event.setName(updatedEvent.getName());
+                    return eventsRepository.save(event);
+                })
+                .orElse(null);
+    }
+
 }

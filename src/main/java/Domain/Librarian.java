@@ -12,7 +12,7 @@ public class Librarian implements Person {
     private String name;
 
     @OneToOne
-    @JoinColumn(name = "idEmployee")
+    @JoinColumn(name = "employee_id") // Define the foreign key column in the Librarian table
     private Employee employee;
 
     private static Librarian instance; // Singleton instance
@@ -48,5 +48,10 @@ public class Librarian implements Person {
     @Override
     public String getName() {
         return name;
+    }
+
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

@@ -3,6 +3,7 @@ package Domain;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -38,11 +39,11 @@ public class Book {
         return BookId;
     }
 
-    public void setBookId(int BookId){
+    public void setBookId(int BookId) {
         this.BookId = BookId;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
 
@@ -50,23 +51,30 @@ public class Book {
         return this.title;
     }
 
-    public void addAuthor(Author author)
-    {
+    public void addAuthor(Author author) {
         authors.add(author);
     }
 
     public List<Author> getAuthors() {
         return authors;
     }
-    public void printAuthors(){
-        for (Author author : authors){
+
+    public void printAuthors() {
+        for (Author author : authors) {
             System.out.println(author.getName());
         }
     }
+
     public void removeAuthor(Author author) {
         authors.remove(author);
     }
 
+    @ManyToMany
+    @JoinTable(
+            name = "book_genre",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
     private List<Genre> genres = new ArrayList<>();
 
 
@@ -75,17 +83,22 @@ public class Book {
             name = "book_events",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "events_id")
-    )private List<Events> events = new ArrayList<>();
+    )
+    private List<Events> events = new ArrayList<>();
 
     public void addGenre(Genre genre) {
         genres.add(genre);
-//        genre.addBook(this);
+        genre.addBook(this);
     }
 
 
     public void addEvents(Events event) {
         events.add(event);
         event.addBook(this);
+    }
+
+    public List<Genre> getGenres() {
+        return genres;
     }
 
 }
