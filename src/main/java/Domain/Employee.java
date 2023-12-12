@@ -2,8 +2,18 @@ package Domain;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@Table(name = "Employee")
+/*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class Employee implements Person{
 
     @Id
@@ -23,9 +33,6 @@ public class Employee implements Person{
         this.Name = name;
     }
 
-    public Employee() {
-        //default constructor for JPA
-    }
 
     public int getIdEmployee() {
         return idEmployee;

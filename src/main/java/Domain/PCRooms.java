@@ -2,11 +2,21 @@ package Domain;
 
 import Domain.Library;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@Table(name = "PCRooms")
+/*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class PCRooms {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

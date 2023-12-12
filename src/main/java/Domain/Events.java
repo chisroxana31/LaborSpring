@@ -1,10 +1,21 @@
 package Domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@Table(name = "Events")
+/*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class Events {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,8 +26,7 @@ public class Events {
     @ManyToMany(mappedBy = "events")
     private List<Book> books = new ArrayList<>();
 
-    public Events() {
-    }
+
 
     public Events(String name) {
         this.name = name;

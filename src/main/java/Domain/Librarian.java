@@ -1,9 +1,18 @@
 package Domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@Table(name = "Librarian")
+/*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class Librarian implements Person {
 
     @Id
@@ -24,9 +33,7 @@ public class Librarian implements Person {
         this.name = name;
     }
 
-    public Librarian() {
 
-    }
 
 //    private Library library;
     // Singleton getInstance method

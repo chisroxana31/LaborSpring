@@ -3,11 +3,19 @@ package Domain;
 import Patterns.LibraryObserver;
 import Patterns.LibraryPolicy;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 @Table(name = "Library")
 public class Library{
     @Id
@@ -37,9 +45,7 @@ public class Library{
 
     private static Library instance;
 
-    public Library() {
-        //default constructor for JPA
-    }
+
 
     public void addEmployee(Employee employee) {
         employees.add(employee);

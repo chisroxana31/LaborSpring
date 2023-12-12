@@ -1,6 +1,10 @@
 package Domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -8,6 +12,12 @@ import java.util.List;
 
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@Table(name = "Book")
+/*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

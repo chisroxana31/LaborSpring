@@ -3,13 +3,19 @@ package Domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
+@Table(name = "Author")
 public class Author implements Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,10 +25,6 @@ public class Author implements Person {
 
     @ManyToMany(mappedBy = "Author")
     private List<Book> books = new ArrayList<>();
-
-    public Author() {
-
-    }
 
 
     public void setName(String name) {
