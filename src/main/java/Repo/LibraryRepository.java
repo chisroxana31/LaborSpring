@@ -1,4 +1,8 @@
 package Repo;
 
-public interface LibraryRepository {
+import Domain.Library;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LibraryRepository extends JpaRepository<Library, Integer> {
+
 }

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Library")
-public class Library implements LibraryPolicy{
+public class Library{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idLibrary;
@@ -21,7 +21,19 @@ public class Library implements LibraryPolicy{
     @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Customer> customers = new ArrayList<>();
 
-    private LibraryPolicy libraryPolicy;
+    @OneToOne(mappedBy = "library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private PCRooms pcRooms;
+
+
+    public PCRooms getPCRooms() {
+        return pcRooms;
+    }
+
+    public void setPCRooms(PCRooms pcRooms) {
+        this.pcRooms = pcRooms;
+        pcRooms.setLibrary(this);
+    }
+//    private LibraryPolicy libraryPolicy;
 
     private static Library instance;
 
@@ -37,13 +49,13 @@ public class Library implements LibraryPolicy{
         return employees;
     }
 
-    public void setLibraryPolicy(LibraryPolicy libraryPolicy) {
-        this.libraryPolicy = libraryPolicy;
-    }
+//    public void setLibraryPolicy(LibraryPolicy libraryPolicy) {
+//        this.libraryPolicy = libraryPolicy;
+//    }
 
     public void addBook(Book book) {
         books.add(book);
-        notifyObservers();
+//        notifyObservers();
     }
 
     public void addCustomer(Customer customer) {
@@ -54,25 +66,25 @@ public class Library implements LibraryPolicy{
         return books;
     }
 
-    public void borrowBook(Customer customer, Book book) {
-        libraryPolicy.borrowBook(customer, book);
-    }
+//    public void borrowBook(Customer customer, Book book) {
+//        libraryPolicy.borrowBook(customer, book);
+//    }
 
-    private List<LibraryObserver> observers = new ArrayList<>();
+//    private List<LibraryObserver> observers = new ArrayList<>();
 
-    public void addObserver(LibraryObserver observer) {
-        observers.add(observer);
-    }
-
-    public void removeObserver(LibraryObserver observer) {
-        observers.remove(observer);
-    }
-
-    private void notifyObservers() {
-        for (LibraryObserver observer : observers) {
-            observer.update(this);
-        }
-    }
+//    public void addObserver(LibraryObserver observer) {
+//        observers.add(observer);
+//    }
+//
+//    public void removeObserver(LibraryObserver observer) {
+//        observers.remove(observer);
+//    }
+//
+//    private void notifyObservers() {
+//        for (LibraryObserver observer : observers) {
+//            observer.update(this);
+//        }
+//    }
     public void printAllCustomers() {
         System.out.println("All Customers:");
 
@@ -97,4 +109,29 @@ public class Library implements LibraryPolicy{
         }
         return null;
     }
+
+    public int getIdLibrary() {
+        return idLibrary;
+    }
+
+    public void setIdLibrary(int idLibrary) {
+        this.idLibrary = idLibrary;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
+
 }

@@ -1,6 +1,7 @@
 package Domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 public class Librarian implements Person {
@@ -11,10 +12,12 @@ public class Librarian implements Person {
     private int idLibrarian;
     private String name;
 
+    @Getter
     @OneToOne
-    @JoinColumn(name = "employee_id") // Define the foreign key column in the Librarian table
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
+    @Getter
     private static Librarian instance; // Singleton instance
     // Private constructor to prevent direct instantiation
     private Librarian(String name) {
@@ -53,5 +56,21 @@ public class Librarian implements Person {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getIdLibrarian() {
+        return idLibrarian;
+    }
+
+    public void setIdLibrarian(int idLibrarian) {
+        this.idLibrarian = idLibrarian;
+    }
+
+    public static void setInstance(Librarian instance) {
+        Librarian.instance = instance;
     }
 }
