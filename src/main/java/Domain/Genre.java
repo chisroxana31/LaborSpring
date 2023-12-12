@@ -25,8 +25,8 @@ public class Genre {
 
     private String name;
 
-    @ManyToMany(mappedBy = "genres")
-    private List<Book> books = new ArrayList<>();
+//    @ManyToMany(mappedBy = "genres")
+//    private List<Book> books = new ArrayList<>();
 
 
     public Genre(String name) {
@@ -41,14 +41,14 @@ public class Genre {
         return name;
     }
 
-    public List<Book> getBooks() {
-        return books;
-    }
+//    public List<Book> getBooks() {
+//        return books;
+//    }
 
-    public void addBook(Book book) {
-        books.add(book);
-        book.getGenres().add(this);
-    }
+//    public void addBook(Book book) {
+//        books.add(book);
+////        book.getGenres().add(this);
+//    }
 
     public void setId(Long id) {
         this.id = id;
@@ -58,7 +58,7 @@ public class Genre {
         this.name = name;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
+//    public void setBooks(List<Book> books) {
+//        this.books = books;
+//    }
 }

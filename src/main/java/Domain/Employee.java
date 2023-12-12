@@ -12,14 +12,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-@Table(name = "Employee")
+@Table(name = "employee")
 /*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class Employee implements Person{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idEmployee;
-    public String Name;
+    public int id;
+    public String name;
 
     @ManyToOne
     @JoinColumn(name = "library_id")
@@ -29,35 +29,35 @@ public class Employee implements Person{
     private Librarian librarian;
 
     public Employee(int idEmployee, String name) {
-        this.idEmployee = idEmployee;
-        this.Name = name;
+        this.id = idEmployee;
+        this.name = name;
     }
 
 
     public int getIdEmployee() {
-        return idEmployee;
+        return id;
     }
 
 
     public void setIdEmployee(int idEmployee) {
-        this.idEmployee = idEmployee;
+        this.id = idEmployee;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setName(String Name) {
+        name = Name;
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
-    public void setLibrary(Library library) {
-        this.library = library;
-        if (!library.getEmployees().contains(this)) {
-            library.addEmployee(this);
-        }
-    }
+//    public void setLibrary(Library library) {
+//        this.library = library;
+//        if (!library.getEmployees().contains(this)) {
+//            library.addEmployee(this);
+//        }
+//    }
     public Librarian getLibrarian() {
         return librarian;
     }

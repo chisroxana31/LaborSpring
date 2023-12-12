@@ -11,7 +11,8 @@ import Repo.LibraryRepository;
 import java.util.List;
 
 
-@RestController@RequestMapping("/api/libraries")
+@RestController
+@RequestMapping("/api/libraries")
 public class LibraryController {
 
     @Autowired
@@ -39,9 +40,9 @@ public class LibraryController {
                 .orElseThrow(() -> new RuntimeException("Library not found with id: " + id));
 
         // Update the properties of the existing library
-        existingLibrary.setEmployees(updatedLibrary.getEmployees());
-        existingLibrary.setBooks(updatedLibrary.getBooks());
-        existingLibrary.setCustomers(updatedLibrary.getCustomers());
+//        existingLibrary.setEmployees(updatedLibrary.getEmployees());
+//        existingLibrary.setBooks(updatedLibrary.getBooks());
+//        existingLibrary.setCustomers(updatedLibrary.getCustomers());
 //        existingLibrary.setLibraryPolicy(updatedLibrary.getLibraryPolicy());
 
         return libraryRepo.save(existingLibrary);

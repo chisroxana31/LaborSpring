@@ -11,13 +11,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-@Table(name = "Librarian")
+@Table(name = "librarian")
 /*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class Librarian implements Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int idLibrarian;
     private String name;
 

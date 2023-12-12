@@ -8,14 +8,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/books")
+@RequestMapping("/api/book")
 public class BookController {
 
     @Autowired
     private BookRepository bookRepository;
 
-    @PostMapping
+    @PostMapping("/add")
     public void addBook(@RequestBody Book book) {
+
         bookRepository.save(book);
     }
 
@@ -25,10 +26,10 @@ public class BookController {
         books.forEach(book -> System.out.println(book.toString()));
     }
 
-    @GetMapping("/findByTitle/{title}")
-    public Book findBookByTitle(@PathVariable String title) {
-        return bookRepository.findByTitleIgnoreCase(title);
-    }
+ //   @GetMapping("/findByTitle/{title}")
+//    public Book findBookByTitle(@PathVariable String title) {
+//        return bookRepository.findByTitleIgnoreCase(title);
+//    }
 
     @GetMapping("/getAll")
     public List<Book> getAllBooks() {

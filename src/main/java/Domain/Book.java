@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Setter
 @Getter
-@Table(name = "Book")
+@Table(name = "book")
 /*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class Book {
     @Id
@@ -31,84 +31,83 @@ public class Book {
             joinColumns = @JoinColumn(name = "idbook"),
             inverseJoinColumns = @JoinColumn(name = "idauthor")
     )
-    private List<Author> authors = new ArrayList<>();
+private List<Author> authors = new ArrayList<>();
 
     @Override
     public String toString() {
         return "Domain.Book{" +
                 "title='" + title + '\'' +
-                ", authors=" + authors +
-                ", BookId=" + BookId +
+                ", BookId=" + id +
                 '}';
     }
 
 
-    private int BookId;
+    //private int BookId;
 
-    public int getBookId() {
-        return BookId;
-    }
+//    public int getBookId() {
+//        return BookId;
+//    }
 
-    public void setBookId(int BookId) {
-        this.BookId = BookId;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
+//    public void setBookId(int BookId) {
+//        this.BookId = BookId;
+//    }
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
 
     public String getTitle() {
         return this.title;
     }
 
-    public void addAuthor(Author author) {
-        authors.add(author);
-    }
+//    public void addAuthor(Author author) {
+//        authors.add(author);
+//    }
+//
+//    public List<Author> getAuthors() {
+//        return authors;
+//    }
+//
+//    public void printAuthors() {
+//        for (Author author : authors) {
+//            System.out.println(author.getName());
+//        }
+//    }
 
-    public List<Author> getAuthors() {
-        return authors;
-    }
-
-    public void printAuthors() {
-        for (Author author : authors) {
-            System.out.println(author.getName());
-        }
-    }
-
-    public void removeAuthor(Author author) {
-        authors.remove(author);
-    }
+//    public void removeAuthor(Author author) {
+//        authors.remove(author);
+//    }
 
     @ManyToMany
     @JoinTable(
-            name = "book_genre",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "genre_id")
+            name = "bookgenre",
+            joinColumns = @JoinColumn(name = "idbook"),
+            inverseJoinColumns = @JoinColumn(name = "idgenre")
     )
     private List<Genre> genres = new ArrayList<>();
 
 
-    @ManyToMany
-    @JoinTable(
-            name = "book_events",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "events_id")
-    )
-    private List<Events> events = new ArrayList<>();
+//    @ManyToMany
+//    @JoinTable(
+//            name = "book_events",
+//            joinColumns = @JoinColumn(name = "book_id"),
+//            inverseJoinColumns = @JoinColumn(name = "events_id")
+//    )
+//    private List<Events> events = new ArrayList<>();
 
-    public void addGenre(Genre genre) {
-        genres.add(genre);
-        genre.addBook(this);
-    }
+//    public void addGenre(Genre genre) {
+//        genres.add(genre);
+//        genre.addBook(this);
+//    }
 
 
-    public void addEvents(Events event) {
-        events.add(event);
-        event.addBook(this);
-    }
-
-    public List<Genre> getGenres() {
-        return genres;
-    }
+//    public void addEvents(Events event) {
+//        events.add(event);
+//        event.addBook(this);
+//    }
+//
+//    public List<Genre> getGenres() {
+//        return genres;
+//    }
 
 }

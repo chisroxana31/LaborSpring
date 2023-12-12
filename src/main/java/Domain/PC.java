@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-@Table(name = "PC")
+@Table(name = "pc")
 /*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class PC {
     @Id

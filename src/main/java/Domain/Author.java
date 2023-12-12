@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Setter
 @Getter
-@Table(name = "Author")
+@Table(name = "author")
 public class Author implements Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +23,8 @@ public class Author implements Person {
 
     private String name;
 
-    @ManyToMany(mappedBy = "Author")
-    private List<Book> books = new ArrayList<>();
+//    @ManyToMany(mappedBy = "Author")
+//    private List<Book> books = new ArrayList<>();
 
 
     public void setName(String name) {
@@ -32,18 +32,12 @@ public class Author implements Person {
     }
 
 
-    @Override
-    public String toString() {
-        return "Domain.Author{" +
-                "name='" + name + '\'' +
-                ", AuthorId=" + AuthorId +
-                '}';
-    }
 
-    private int AuthorId;
 
-    public int getAuthorId() {
-        return AuthorId;
+    //private int AuthorId;
+
+    public long getAuthorId() {
+        return id;
     }
 
     public Author(String name){
@@ -56,11 +50,11 @@ public class Author implements Person {
         return name;
     }
 
-    public void writeBook(Book book){
-        book.addAuthor(this);
-    }
+//    public void writeBook(Book book){
+//        book.addAuthor(this);
+//    }
 
-    public void setAuthorId(int authorIdCounter) {
-        this.AuthorId = authorIdCounter;
-    }
+//    public void setAuthorId(int authorIdCounter) {
+//        this.AuthorId = authorIdCounter;
+//    }
 }

@@ -23,8 +23,8 @@ public class Events {
 
     private String name;
 
-    @ManyToMany(mappedBy = "events")
-    private List<Book> books = new ArrayList<>();
+//    @ManyToMany(mappedBy = "events")
+//    private List<Book> books = new ArrayList<>();
 
 
 
@@ -42,12 +42,12 @@ public class Events {
         this.name = name;
     }
 
-    public List<Book> getBooks() {
-        return books;
-    }
+//    public List<Book> getBooks() {
+//        return books;
+//    }
 
-    public void addBook(Book book) {
-        books.add(book);
-        book.addEvents(this); // Ensure bidirectional relationship
-    }
+//    public void addBook(Book book) {
+//        books.add(book);
+//        book.addEvents(this); // Ensure bidirectional relationship
+//    }
 }

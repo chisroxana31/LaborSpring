@@ -11,8 +11,12 @@ import java.util.List;
 @RequestMapping("/api/authors")
 public class AuthorController {
 
+    private final AuthorRepository authorRepository;
+
     @Autowired
-    private AuthorRepository authorRepository;
+    public AuthorController(AuthorRepository authorRepository) {
+        this.authorRepository = authorRepository;
+    }
 
     @PostMapping("/add")
     public void addAuthor(@RequestBody Author author) {

@@ -32,9 +32,9 @@ public class CustomerController {
         customerRepository.save(customer);
     }
 
-    @GetMapping("/findByName/{name}")
-    public List<Customer> getCustomersByName(@PathVariable String name) {
-        return customerRepository.findByNameIgnoreCase(name);
-    }
+//    @GetMapping("/findByName/{name}")
+//    public List<Customer> getCustomersByName(@PathVariable String name) {
+//        return customerRepository.findByNameIgnoreCase(name);
+//    }
 
 }

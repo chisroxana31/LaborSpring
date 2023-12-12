@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Setter
 @Getter
-@Table(name = "PCRooms")
+@Table(name = "pcrooms")
 /*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class PCRooms {
     @Id

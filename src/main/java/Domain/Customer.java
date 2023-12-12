@@ -14,14 +14,15 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-@Table(name = "Customer")
+@Table(name = "customer")
 /*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class Customer implements Person, LibraryObserver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String Name;
     private int id;
+    private String Name;
+
 
     @Override
     public String toString() {
