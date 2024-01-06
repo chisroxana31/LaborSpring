@@ -65,7 +65,7 @@ public class TestLibrary {
 //
 //    public static void testFactory() {
 //        // Create a book event
-//        Events bookEvent = EventsFactory.createEvent("Book", "BookEvent");
+//        Events bookEvent = EventsFactory.createEvent("Book", "Controller.BookEvent");
 //        System.out.println("Created event type: " + bookEvent.getName());
 //
 //        // Create another type of event
