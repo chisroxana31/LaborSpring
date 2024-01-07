@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Table(name = "librarian")
-/*Aici trebuie modificat in functie de numele tabelului din baza de date*/
+
 public class Librarian implements Person {
 
     @Id
@@ -22,8 +22,10 @@ public class Librarian implements Person {
 
     @Getter
     @OneToOne
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
+    @JoinColumn(name = "library_id")
+    private Library library;
+
+
 
     @Getter
     private static Librarian instance; // Singleton instance
@@ -60,8 +62,8 @@ public class Librarian implements Person {
     }
 
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setLibrary(Library library) {
+        this.library = library;
     }
 
     public void setName(String name) {

@@ -16,6 +16,7 @@ public class LibrarianController {
 
     @PostMapping
     public Librarian createLibrarian(@RequestBody Librarian librarian) {
+
         // You might want to validate or perform additional logic before saving
         return librarianRepository.save(librarian);
     }
@@ -37,7 +38,7 @@ public class LibrarianController {
                 .orElseThrow(() -> new RuntimeException("Librarian not found with id: " + id));
 
         existingLibrarian.setName(updatedLibrarian.getName());
-        existingLibrarian.setEmployee(updatedLibrarian.getEmployee());
+//        existingLibrarian.setEmployee(updatedLibrarian.getEmployee());
 
         return librarianRepository.save(existingLibrarian);
     }

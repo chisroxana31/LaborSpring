@@ -1,13 +1,13 @@
-package Employee;
+package Domain;
 
-public class LoggingEmployeeDecorator implements Employee {
+public class LoggingEmployeeDecorator implements Person {
 
     private Employee decoratedEmployee = null;
 
 
 
-    public LoggingEmployeeDecorator(Domain.Employee employee) {
-        this.decoratedEmployee = decoratedEmployee;
+    public LoggingEmployeeDecorator(Employee employee) {
+        this.decoratedEmployee = employee;
     }
 
     @Override

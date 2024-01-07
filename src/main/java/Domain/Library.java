@@ -22,8 +22,11 @@ public class Library{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idlibrary;
 
-//    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Employee> employees = new ArrayList<>();
+//    @OneToOne(mappedBy = "idLibrarian", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private Librarian librarian;
+
+    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Employee> employees = new ArrayList<>();
 //    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private List<Book> books = new ArrayList<>();
 //    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

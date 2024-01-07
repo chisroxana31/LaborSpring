@@ -25,8 +25,8 @@ public class Employee implements Person{
     @JoinColumn(name = "library_id")
     private Library library;
 
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Librarian librarian;
+//    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private Librarian librarian;
 
     public Employee(int idEmployee, String name) {
         this.id = idEmployee;
@@ -61,14 +61,14 @@ public class Employee implements Person{
 //            library.addEmployee(this);
 //        }
 //    }
-    public Librarian getLibrarian() {
-        return librarian;
-    }
-
-    public void setLibrarian(Librarian librarian) {
-        this.librarian = librarian;
-        if (librarian != null) {
-            librarian.setEmployee(this);
-        }
-    }
+//    public Librarian getLibrarian() {
+//        return librarian;
+//    }
+//
+//    public void setLibrarian(Librarian librarian) {
+//        this.librarian = librarian;
+//        if (librarian != null) {
+//            librarian.setEmployee(this);
+//        }
+//    }
 }

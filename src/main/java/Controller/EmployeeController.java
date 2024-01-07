@@ -1,10 +1,10 @@
 package Controller;
 
 import Domain.Employee;
+import Domain.LoggingEmployeeDecorator;
 import Repo.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import Employee.LoggingEmployeeDecorator;
 
 import java.util.List;
 
@@ -15,11 +15,11 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    private final Employee employee;
+//    private final Employee employee;
 
     @Autowired
-    public EmployeeController(Employee employee) {
-        this.employee = employee;
+    public EmployeeController(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
 
     @GetMapping
@@ -32,7 +32,7 @@ public class EmployeeController {
         return employeeRepository.findById(employeeId).orElse(null);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public void addEmployee(@RequestBody Employee employee) {
         employeeRepository.save(employee);
     }
@@ -52,13 +52,19 @@ public class EmployeeController {
     }
 
 
-    @GetMapping("/getEmployeeName")
-    public String getEmployeeName() {
+    @GetMapping("/getEmployeeName/{employeeId}")
+    public String getEmployeeName(@PathVariable int employeeId) {
+        Employee employee = employeeRepository.findById(employeeId).orElse(null);
         // Use the logging decorator for the employee
-        Employee loggingEmployee = new Employee(employee);
+        if (employee != null) {
+            LoggingEmployeeDecorator loggingEmployee = new LoggingEmployeeDecorator(employee);
 
-        // Access the employee's name (this will print log messages)
-        String employeeName = loggingEmployee.getName();
-        return "Employee's name: " + employeeName;
+            // Access the employee's name (this will print log messages)
+            String employeeName = loggingEmployee.getName();
+            return "Employee's name: " + employeeName;
+        }
+        return null;
     }
+    //da eroare pentru ca nu e legat de o librarie
+    //
 }

@@ -15,7 +15,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Table(name = "customer")
-/*Aici trebuie modificat in functie de numele tabelului din baza de date*/
+
 public class Customer implements Person, LibraryObserver {
 
     @Id
