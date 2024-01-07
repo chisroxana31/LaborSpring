@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Table(name = "employee")
-/*Aici trebuie modificat in functie de numele tabelului din baza de date*/
+
 public class Employee implements Person{
 
     @Id
@@ -31,6 +31,9 @@ public class Employee implements Person{
     public Employee(int idEmployee, String name) {
         this.id = idEmployee;
         this.name = name;
+    }
+
+    public Employee(Employee employee) {
     }
 
 
