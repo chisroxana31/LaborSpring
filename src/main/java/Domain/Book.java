@@ -33,6 +33,9 @@ public class Book {
     )
 private List<Author> authors = new ArrayList<>();
 
+    public Book(long l, String testBook) {
+    }
+
     @Override
     public String toString() {
         return "Domain.Book{" +

@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @Setter
 @Getter
 @Table(name = "Genre")
@@ -23,15 +23,20 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public Genre(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     private String name;
 
 //    @ManyToMany(mappedBy = "genres")
 //    private List<Book> books = new ArrayList<>();
 
 
-    public Genre(String name) {
-        this.name = name;
-    }
+//    public Genre(String name) {
+//        this.name = name;
+//    }
 
     public Long getId() {
         return id;

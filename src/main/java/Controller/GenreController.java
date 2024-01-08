@@ -14,7 +14,7 @@ public class GenreController {
     @Autowired
     private GenreRepository genreRepository;
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<Genre> getAllGenres() {
         return genreRepository.findAll();
     }
@@ -24,7 +24,7 @@ public class GenreController {
         return genreRepository.findById(genreId).orElse(null);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public void addGenre(@RequestBody Genre genre) {
         genreRepository.save(genre);
     }
@@ -45,7 +45,7 @@ public class GenreController {
 
     // Add other CRUD operations and business logic...
 
-    @DeleteMapping("/{genreId}")
+    @DeleteMapping("/delete/{genreId}")
     public void deleteGenre(@PathVariable Long genreId) {
         genreRepository.deleteById(genreId);
     }
