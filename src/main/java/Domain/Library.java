@@ -2,6 +2,7 @@ package Domain;
 
 import Patterns.LibraryObserver;
 import Patterns.LibraryPolicy;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +27,7 @@ public class Library{
 //    private Librarian librarian;
 
     @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Employee> employees = new ArrayList<>();
 //    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private List<Book> books = new ArrayList<>();

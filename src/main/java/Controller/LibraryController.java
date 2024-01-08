@@ -18,12 +18,12 @@ public class LibraryController {
     @Autowired
     private LibraryRepository libraryRepo;
 
-    @PostMapping
+    @PostMapping("/add")
     public Library createLibrary(@RequestBody Library library){
         return libraryRepo.save(library);
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<Library> getAllLibraries(){
         return libraryRepo.findAll();
     }

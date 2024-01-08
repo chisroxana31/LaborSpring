@@ -14,14 +14,14 @@ public class LibrarianController {
     @Autowired
     private LibrarianRepository librarianRepository;
 
-    @PostMapping
+    @PostMapping("/add")
     public Librarian createLibrarian(@RequestBody Librarian librarian) {
 
         // You might want to validate or perform additional logic before saving
         return librarianRepository.save(librarian);
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<Librarian> getAllLibrarians() {
         return librarianRepository.findAll();
     }

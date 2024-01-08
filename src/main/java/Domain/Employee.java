@@ -1,6 +1,7 @@
 package Domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +23,8 @@ public class Employee implements Person{
     public String name;
 
     @ManyToOne
-    @JoinColumn(name = "library_id")
+    @JoinColumn(name = "idlibrary")
+    @JsonBackReference
     private Library library;
 
 //    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

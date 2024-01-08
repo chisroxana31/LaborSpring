@@ -16,7 +16,7 @@ public class CustomerController {
 
     // Assuming you have a CustomerService injected for business logic
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
@@ -26,7 +26,7 @@ public class CustomerController {
         return customerRepository.findById(customerId).orElse(null);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public void addCustomer(@RequestBody Customer customer) {
         // You can add business logic in the service layer if needed
         customerRepository.save(customer);
