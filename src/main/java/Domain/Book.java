@@ -17,7 +17,6 @@ import java.util.List;
 @Setter
 @Getter
 @Table(name = "book")
-/*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
