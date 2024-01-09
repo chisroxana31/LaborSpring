@@ -15,11 +15,7 @@ public class BookEventPublisher {
         this.eventPublisher = eventPublisher;
     }
 
-    @Component
-    public class BookEvent extends ApplicationEvent {
-
-        public BookEvent(Book source) {
-            super(source);
-        }
+    public void publishEvent(BookEvent bookEvent) {
+        eventPublisher.publishEvent(bookEvent);
     }
 }

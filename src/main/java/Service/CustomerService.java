@@ -26,6 +26,12 @@ public class CustomerService {
         // You can add business logic here before saving if needed
         customerRepository.save(customer);
     }
+    public void updateCustomer(long id, Customer updatedCustomer) {
+        Customer existingCustomer = customerRepository.findById(id).orElse(null);
+        if (existingCustomer != null) {
+            existingCustomer.setName(updatedCustomer.getName());
+            customerRepository.save(existingCustomer);
+        }
+    }
 
-    // Add additional methods if needed
 }

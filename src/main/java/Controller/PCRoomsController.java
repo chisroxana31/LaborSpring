@@ -29,7 +29,7 @@ public class PCRoomsController {
         return pcRoomsService.getPCRoomById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public PCRooms updatePCRoom(@PathVariable int id, @RequestBody PCRooms updatedPCRoom) {
         return pcRoomsService.updatePCRoom(id, updatedPCRoom);
     }

@@ -29,7 +29,7 @@ public class EmployeeController {
         employeeService.addEmployee(employee);
     }
 
-    @PutMapping("/{employeeId}")
+    @PutMapping("/update/{employeeId}")
     public void updateEmployee(@PathVariable int employeeId, @RequestBody Employee updatedEmployee) {
         employeeService.updateEmployee(employeeId, updatedEmployee);
     }

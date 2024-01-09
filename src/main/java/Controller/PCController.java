@@ -29,7 +29,7 @@ public class PCController {
         return pcService.getPCById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public PC updatePC(@PathVariable int id, @RequestBody PC updatedPC) {
         return pcService.updatePC(id, updatedPC);
     }

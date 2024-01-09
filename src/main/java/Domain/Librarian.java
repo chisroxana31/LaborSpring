@@ -70,9 +70,9 @@ public class Librarian implements Person {
         this.name = name;
     }
 
-    public int getIdLibrarian() {
-        return idLibrarian;
-    }
+//    public int getIdLibrarian() {
+//        return idLibrarian;
+//    }
 
     public void setIdLibrarian(int idLibrarian) {
         this.idLibrarian = idLibrarian;

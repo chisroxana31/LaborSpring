@@ -39,9 +39,9 @@ public class Employee implements Person{
     }
 
 
-    public int getIdEmployee() {
-        return id;
-    }
+//    public int getIdEmployee() {
+//        return id;
+//    }
 
 
     public void setIdEmployee(int idEmployee) {

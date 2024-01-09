@@ -29,7 +29,7 @@ public class GenreController {
         genreService.addGenre(genre);
     }
 
-    @PutMapping("/{genreId}")
+    @PutMapping("/update/{genreId}")
     public void updateGenre(@PathVariable Long genreId, @RequestBody Genre updatedGenre) {
         genreService.updateGenre(genreId, updatedGenre);
     }

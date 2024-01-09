@@ -45,5 +45,8 @@ public class BookController {
         return bookService.getBookById(bookId);
     }
 
-    // Update method if needed
+    @PutMapping("/update/{bookId}")
+    public Book updateBook(@PathVariable Long bookId, @RequestBody Book updatedBook) {
+        return bookService.updateBook(bookId, updatedBook);
+    }
 }

@@ -1,5 +1,6 @@
 package Domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -69,9 +70,9 @@ private List<Author> authors = new ArrayList<>();
 //        authors.add(author);
 //    }
 //
-//    public List<Author> getAuthors() {
-//        return authors;
-//    }
+    public List<Author> getAuthors() {
+        return authors;
+    }
 //
 //    public void printAuthors() {
 //        for (Author author : authors) {
@@ -90,7 +91,10 @@ private List<Author> authors = new ArrayList<>();
             inverseJoinColumns = @JoinColumn(name = "idgenre")
     )
     private List<Genre> genres = new ArrayList<>();
-
+//    public void addAuthor(Author author) {
+//        authors.add(author);
+//        author.getBooks().add(this); // Make sure to update the other side of the relationship
+//    }
 
 //    @ManyToMany
 //    @JoinTable(

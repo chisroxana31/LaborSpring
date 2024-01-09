@@ -29,7 +29,7 @@ public class LibrarianController {
         return librarianService.getLibrarianById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public Librarian updateLibrarian(@PathVariable int id, @RequestBody Librarian updatedLibrarian) {
         return librarianService.updateLibrarian(id, updatedLibrarian);
     }

@@ -46,9 +46,9 @@ public class Author implements Person {
                 '}';
     }
 
-    public long getAuthorId() {
-        return id;
-    }
+//    public long getAuthorId() {
+//        return id;
+//    }
 
     public Author(String name){
         this.name = name;

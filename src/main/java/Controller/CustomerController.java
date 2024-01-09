@@ -29,5 +29,9 @@ public class CustomerController {
         customerService.addCustomer(customer);
     }
 
-    // Add additional mappings and methods if needed
+    @PutMapping("/{customerId}")
+    public void updateCustomer(@PathVariable int customerId, @RequestBody Customer updatedCustomer) {
+        customerService.updateCustomer(customerId, updatedCustomer);
+    }
+
 }
