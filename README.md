@@ -91,38 +91,7 @@ Focusing on library users, the Customer entity contains information about indivi
 Whether you are a librarian managing the library's resources or a library user looking for information, the Library Spring Project provides a comprehensive and user-friendly solution to meet your needs. Dive into the world of organized and efficient library management with our Spring Boot application!
 
 
-## Setup
 
-To get started with the MapMovie project, follow these steps:
-
-1. Clone the project repository:
-
-   ```bash
-   ```
-
-2. Open the project in your preferred Java Integrated Development Environment (IDE).
-
-    ```bash
-    code -r mapmovie
-    ```
-
-3. Build the project using Maven or Gradle.
-
-    ```bash
-    mvn clean install
-    ```
-
-4. Configure the database connection in the application.properties file.
-
-    ```bash
-    docker compose up -d
-    ```
-
-5. Run the application.
-
-    ```
-    mvn spring-boot:run
-    ```
 
 ## JPA Integration:
 The project seamlessly integrates with JPA for data persistence, allowing for efficient storage and retrieval of information related to library entities. JPA annotations are used to map Java objects to database tables, providing a clean and object-oriented approach to managing the project's data.
@@ -133,83 +102,70 @@ The project provides a RESTful API for managing entities. It follows the common 
 
 # Examples of CRUD Operations with Postman
 
-## 1. Create (POST) - Add a New Book (example)
+## 1. Create (POST) - Add a New Employee (example)
 **Request:**
 - **Method:** POST
-- **Endpoint:** `/api/books`
+- **Endpoint:** `/api/employees/add`
 - **Body:**
-  ```json
-  {
-    "name": "The Great Gatsby",
-    "authorId": 1,
-    "authorId": 2
-  }
-
-## Read (GET) - Retrieve Book Information (example)
+- 
+  ![Local Image](documentation_images/add_employee.png)
+- 
+## 2. Read (GET) - Retrieve Information about Authors (example)
 **Request:**
 - **Method:** GET
-- **Endpoint:** `/api/authors`
+- **Endpoint:** `/api/authors/getAll`
 - **Body:**
-  ```json
-  {
-    "id": 2,
-    "name": "Jane Austen",
-    "authorId": 3
-  }
+
 ![Local Image](documentation_images/getAll_authors.png)
 
-## Update (PUT) - Modify Book Information (example)
+## 3. Update (PUT) - Modify Book Information (example)
 **Request:**
 - **Method:** PUT
-- **Endpoint:** `/api/books`
+- **Endpoint:** `/api/book/update/{{bookid}}`
 - **Body:**
-  ```json
-  {
-    "name": "The Great Gatsby (updated) ",
-    "authorId": 1,
-    "genreId": 2
-  }
+- **Before sending the Update Message:**
+
+![Local Image](documentation_images/update_before.png)
 
 
-- DELETE /{entity}/{id}: Delete an entity by ID.
-```bash
-curl -X DELETE /entity/{id}
-```
+- **After sending the Update Message:**
 
-## Error Handling
-The error handling in our project is based on the HTTP status codes. Here are the most common scenarios:
+![Local Image](documentation_images/update_after.png)
 
-404 Not Found
-In scenarios where an entity is not found, such as when using the findActor operation, the system returns an HTTP 404 Not Found response.
+## 4. Delete (DELETE) - Remove an Event (example)
+**Request:**
+- **Method:** DELETE
+- **Endpoint:** `/api/events/{{eventId}}`
+- **Body:**
+- **Before sending a Delete Message, there are 2 events:**
 
-```bash
-curl -IX GET /entity/{nonexistent_id}
-```
+![Local Image](documentation_images/events_before.png)
 
-```bash
-HTTP/1.1 404 
-Content-Length: 0
-Date: Mon, 08 Jan 2024 13:11:18 GMT
-```
+- **After sending a Delete Message, there is only one Event left:**
 
+![Local Image](documentation_images/events_after.png)
+
+
+  
 # Use Cases for Library Spring Project with JPA
 
 ## 1. Library Resource Management
 **Use Case:** Librarians and administrators can efficiently manage and organize the library's vast collection of books, genres, and authors using the CRUD operations provided by the RESTful service.
-**Example Scenario:** A librarian adds a new book to the library, specifying the title, author, genre, and availability. The information is seamlessly stored in the database using JPA.
+**Example Scenario:** A librarian adds a new book to the library, specifying the title, author and genre. The information is seamlessly stored in the database using JPA.
 
-## 2. User Interaction and Book Borrowing
-**Use Case:** Library users can interact with the system to search for books, view availability, and borrow items from the library.
-**Example Scenario:** A library user searches for books by a specific author, reviews the availability status, and borrows a book. The system updates the book's availability in the database, ensuring real-time information.
+## 2. Management of Multiple Libraries
+**Use Case:** Bigger companies, with multiple library stores, can use the system to store and keep track of books from each library, events that take place and employees in each library.
+**Example Scenario:** The company or publishing house can own multiple libraries in the same city. This project helps keep track of the activity of each book store individually but it can control and access the overall information from each of them.
 
 ## 3. Event Management
 **Use Case:** The library can organize and manage various events such as book launches, author talks, and workshops using the Events entity.
-**Example Scenario:** The library plans a literary event, adds details like the event title, date, and participants. The information is stored, allowing users to access event details and participate.
+**Example Scenario:** The library plans a literary event, adds details like the event title. The information is stored, allowing users to access event details and participate.
 
 ## 4. Employee and PC Management
-**Use Case:** Library administrators can keep track of employees, manage computer resources, and monitor the availability of PCs in the library.
-**Example Scenario:** An administrator adds a new employee to the system, including details like name and role. Additionally, the administrator updates the availability status of PCs in the PCRoom, ensuring accurate information for library users.
+**Use Case:** Library administrators can keep track of employees, manage computer resources, and monitor the functionality of PCs in the library.
+**Example Scenario:** An administrator adds a new employee to the system, including details like name and role(librarian). Additionally, the librarian can ensure accurate information for library users.
 
 ## 5. Genre-Based Recommendations
 **Use Case:** The system can provide personalized book recommendations based on a user's preferred genres and reading history.
-**Example Scenario:** A user logs in, and the system analyzes their borrowing history and favorite genres. The system then suggests new books or events aligned with the user's interests, enhancing the overall user experience.
+**Example Scenario:** A customer can access books from his prefered genre, by searching for the books that have that GenreId. 
+
