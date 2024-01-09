@@ -3,6 +3,7 @@ package Controller;
 import Domain.Book;
 import Repo.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,10 +15,14 @@ public class BookController {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private ApplicationEventPublisher bookEventPublisher;
+
     @PostMapping("/add")
     public void addBook(@RequestBody Book book) {
 
         bookRepository.save(book);
+        bookEventPublisher.publishEvent(new BookEvent(book));
     }
 
     @GetMapping("/printAll")

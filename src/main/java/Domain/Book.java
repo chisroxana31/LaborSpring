@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,6 +18,7 @@ import java.util.List;
 @Setter
 @Getter
 @Table(name = "book")
+@Component
 /*Aici trebuie modificat in functie de numele tabelului din baza de date*/
 public class Book {
     @Id

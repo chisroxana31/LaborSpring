@@ -1,6 +1,8 @@
 package Controller;
 
 import Controller.BookEvent;
+import Domain.Book;
+import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +15,11 @@ public class BookEventPublisher {
         this.eventPublisher = eventPublisher;
     }
 
-    public void publishBookAddedEvent() {
-        BookEvent bookEvent = new BookEvent(this);
-        eventPublisher.publishEvent(bookEvent);
+    @Component
+    public class BookEvent extends ApplicationEvent {
+
+        public BookEvent(Book source) {
+            super(source);
+        }
     }
 }
