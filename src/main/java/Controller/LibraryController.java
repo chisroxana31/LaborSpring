@@ -1,6 +1,7 @@
 package Controller;
 
 import Domain.Library;
+import Service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,40 +17,31 @@ import java.util.List;
 public class LibraryController {
 
     @Autowired
-    private LibraryRepository libraryRepo;
+    private LibraryService libraryService;
 
     @PostMapping("/add")
     public Library createLibrary(@RequestBody Library library){
-        return libraryRepo.save(library);
+        return libraryService.createLibrary(library);
     }
 
     @GetMapping("/getAll")
     public List<Library> getAllLibraries(){
-        return libraryRepo.findAll();
+        return libraryService.getAllLibraries();
     }
 
     @GetMapping("/{id}")
     public Library getLibraryById(@PathVariable int id) {
-        return libraryRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Library not found with id: " + id));
+        return libraryService.getLibraryById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public Library updateLibrary(@PathVariable int id, @RequestBody Library updatedLibrary) {
-        Library existingLibrary = libraryRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Library not found with id: " + id));
-
-        // Update the properties of the existing library
-//        existingLibrary.setEmployees(updatedLibrary.getEmployees());
-//        existingLibrary.setBooks(updatedLibrary.getBooks());
-//        existingLibrary.setCustomers(updatedLibrary.getCustomers());
-//        existingLibrary.setLibraryPolicy(updatedLibrary.getLibraryPolicy());
-
-        return libraryRepo.save(existingLibrary);
+        libraryService.updateLibrary(id,updatedLibrary);
+        return updatedLibrary;
     }
 
     @DeleteMapping("/{id}")
     public void deleteLibrary(@PathVariable int id) {
-        libraryRepo.deleteById(id);
+        libraryService.deleteLibrary(id);
     }
 }

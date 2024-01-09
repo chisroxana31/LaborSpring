@@ -1,7 +1,7 @@
 package Controller;
 
 import Domain.PCRooms;
-import Repo.PCRoomsRepository;
+import Service.PCRoomsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,41 +10,32 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/pcrooms")
 public class PCRoomsController {
-    private final PCRoomsRepository pcRoomRepository;
 
     @Autowired
-    public PCRoomsController(PCRoomsRepository pcRoomRepository) {
-        this.pcRoomRepository = pcRoomRepository;
-    }
+    private PCRoomsService pcRoomsService;
 
     @PostMapping
     public PCRooms addPCRoom(@RequestBody PCRooms pcRoom) {
-        return pcRoomRepository.save(pcRoom);
+        return pcRoomsService.addPCRoom(pcRoom);
     }
 
     @GetMapping
     public List<PCRooms> getAllPCRooms() {
-        return pcRoomRepository.findAll();
+        return pcRoomsService.getAllPCRooms();
     }
 
     @GetMapping("/{id}")
     public PCRooms getPCRoomById(@PathVariable int id) {
-        return pcRoomRepository.findById(id).orElse(null);
+        return pcRoomsService.getPCRoomById(id);
     }
 
     @PutMapping("/{id}")
     public PCRooms updatePCRoom(@PathVariable int id, @RequestBody PCRooms updatedPCRoom) {
-        PCRooms existingPCRoom = pcRoomRepository.findById(id).orElse(null);
-        if (existingPCRoom != null) {
-            existingPCRoom.setName(updatedPCRoom.getName());
-            existingPCRoom.setLibrary(updatedPCRoom.getLibrary());
-            return pcRoomRepository.save(existingPCRoom);
-        }
-        return null;
+        return pcRoomsService.updatePCRoom(id, updatedPCRoom);
     }
 
     @DeleteMapping("/{id}")
     public void deletePCRoom(@PathVariable int id) {
-        pcRoomRepository.deleteById(id);
+        pcRoomsService.deletePCRoom(id);
     }
 }

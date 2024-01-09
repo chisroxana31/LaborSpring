@@ -1,7 +1,7 @@
 package Controller;
 
 import Domain.Genre;
-import Repo.GenreRepository;
+import Service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,41 +12,37 @@ import java.util.List;
 public class GenreController {
 
     @Autowired
-    private GenreRepository genreRepository;
+    private GenreService genreService;
 
     @GetMapping("/getAll")
     public List<Genre> getAllGenres() {
-        return genreRepository.findAll();
+        return genreService.getAllGenres();
     }
 
     @GetMapping("/{genreId}")
     public Genre getGenreById(@PathVariable Long genreId) {
-        return genreRepository.findById(genreId).orElse(null);
+        return genreService.getGenreById(genreId);
     }
 
     @PostMapping("/add")
     public void addGenre(@RequestBody Genre genre) {
-        genreRepository.save(genre);
+        genreService.addGenre(genre);
     }
 
     @PutMapping("/{genreId}")
     public void updateGenre(@PathVariable Long genreId, @RequestBody Genre updatedGenre) {
-        Genre existingGenre = genreRepository.findById(genreId).orElse(null);
-        if (existingGenre != null) {
-            existingGenre.setName(updatedGenre.getName());
-            genreRepository.save(existingGenre);
-        }
+        genreService.updateGenre(genreId, updatedGenre);
     }
 
     @GetMapping("/findByName/{name}")
     public List<Genre> getGenresByName(@PathVariable String name) {
-        return genreRepository.findByName(name);
+        return genreService.getGenresByName(name);
     }
 
     // Add other CRUD operations and business logic...
 
     @DeleteMapping("/delete/{genreId}")
     public void deleteGenre(@PathVariable Long genreId) {
-        genreRepository.deleteById(genreId);
+        genreService.deleteGenre(genreId);
     }
 }

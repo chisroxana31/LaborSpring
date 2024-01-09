@@ -1,7 +1,7 @@
 package Controller;
 
 import Domain.Author;
-import Repo.AuthorRepository;
+import Service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,38 +11,33 @@ import java.util.List;
 @RequestMapping("/api/authors")
 public class AuthorController {
 
-    private final AuthorRepository authorRepository;
-
     @Autowired
-    public AuthorController(AuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
-    }
+    private AuthorService authorService;
 
     @PostMapping("/add")
     public void addAuthor(@RequestBody Author author) {
-        authorRepository.save(author);
+        authorService.addAuthor(author);
     }
 
     @GetMapping("/findByName/{authorName}")
     public Author findAuthorByName(@PathVariable String authorName) {
-        return authorRepository.findByNameIgnoreCase(authorName);
+        return authorService.findAuthorByName(authorName);
     }
 
     @GetMapping("/getAll")
     public List<Author> getAllAuthors() {
-        return (List<Author>) authorRepository.findAll();
+        return authorService.getAllAuthors();
     }
 
     @GetMapping("/printAll")
     public void printAllAuthors() {
-        Iterable<Author> authors = authorRepository.findAll();
+        List<Author> authors = authorService.getAllAuthors();
         authors.forEach(author -> System.out.println(author.toString()));
     }
 
     @DeleteMapping("/remove/{authorId}")
     public void removeAuthor(@PathVariable Long authorId) {
-        authorRepository.deleteById(authorId);
+        authorService.removeAuthor(authorId);
     }
 
-    //update author
 }

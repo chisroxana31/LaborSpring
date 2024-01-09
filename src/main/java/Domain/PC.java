@@ -24,7 +24,6 @@ public class PC {
     @JoinColumn(name = "idRoom")
     private PCRooms pcRoom;
 
-    // Rest of the code remains unchanged...
 
     public PCRooms getPCRoom() {
         return pcRoom;

@@ -1,6 +1,7 @@
 package Domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,18 +24,27 @@ public class Author implements Person {
 
     private String name;
 
-//    @ManyToMany(mappedBy = "Author")
-//    private List<Book> books = new ArrayList<>();
+    @ManyToMany
+    @JsonBackReference
+    @JoinTable(
+            name = "bookauthor",
+            joinColumns = @JoinColumn(name = "idauthor"),
+            inverseJoinColumns = @JoinColumn(name = "idbook")
+    )
+    private List<Book> books = new ArrayList<>();
 
 
     public void setName(String name) {
         this.name = name;
     }
 
-
-
-
-    //private int AuthorId;
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 
     public long getAuthorId() {
         return id;
@@ -50,11 +60,5 @@ public class Author implements Person {
         return name;
     }
 
-//    public void writeBook(Book book){
-//        book.addAuthor(this);
-//    }
 
-//    public void setAuthorId(int authorIdCounter) {
-//        this.AuthorId = authorIdCounter;
-//    }
 }

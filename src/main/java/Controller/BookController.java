@@ -1,9 +1,8 @@
 package Controller;
 
 import Domain.Book;
-import Repo.BookRepository;
+import Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,43 +12,38 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    private BookRepository bookRepository;
-
-    @Autowired
-    private ApplicationEventPublisher bookEventPublisher;
+    private BookService bookService;
 
     @PostMapping("/add")
     public void addBook(@RequestBody Book book) {
-
-        bookRepository.save(book);
-        bookEventPublisher.publishEvent(new BookEvent(book));
+        bookService.addBook(book);
     }
 
     @GetMapping("/printAll")
     public void printAllBooks() {
-        Iterable<Book> books = bookRepository.findAll();
+        List<Book> books = bookService.getAllBooks();
         books.forEach(book -> System.out.println(book.toString()));
     }
 
- //   @GetMapping("/findByTitle/{title}")
-//    public Book findBookByTitle(@PathVariable String title) {
-//        return bookRepository.findByTitleIgnoreCase(title);
-//    }
+    @GetMapping("/findByTitle/{title}")
+    public Book findBookByTitle(@PathVariable String title) {
+        return bookService.findBookByTitle(title);
+    }
 
     @GetMapping("/getAll")
     public List<Book> getAllBooks() {
-        return (List<Book>) bookRepository.findAll();
+        return bookService.getAllBooks();
     }
 
     @DeleteMapping("/remove/{bookId}")
     public void removeBook(@PathVariable Long bookId) {
-        bookRepository.deleteById(bookId);
+        bookService.removeBook(bookId);
     }
 
     @GetMapping("/getById/{bookId}")
     public Book getBookById(@PathVariable Long bookId) {
-        return bookRepository.findById(bookId).orElse(null);
+        return bookService.getBookById(bookId);
     }
 
-    //update
+    // Update method if needed
 }

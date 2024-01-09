@@ -1,7 +1,7 @@
 package Controller;
 
 import Domain.Librarian;
-import Repo.LibrarianRepository;
+import Service.LibrarianService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,39 +12,30 @@ import java.util.List;
 public class LibrarianController {
 
     @Autowired
-    private LibrarianRepository librarianRepository;
+    private LibrarianService librarianService;
 
     @PostMapping("/add")
     public Librarian createLibrarian(@RequestBody Librarian librarian) {
-
-        // You might want to validate or perform additional logic before saving
-        return librarianRepository.save(librarian);
+        return librarianService.createLibrarian(librarian);
     }
 
     @GetMapping("/getAll")
     public List<Librarian> getAllLibrarians() {
-        return librarianRepository.findAll();
+        return librarianService.getAllLibrarians();
     }
 
     @GetMapping("/{id}")
     public Librarian getLibrarianById(@PathVariable int id) {
-        return librarianRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Librarian not found with id: " + id));
+        return librarianService.getLibrarianById(id);
     }
 
     @PutMapping("/{id}")
     public Librarian updateLibrarian(@PathVariable int id, @RequestBody Librarian updatedLibrarian) {
-        Librarian existingLibrarian = librarianRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Librarian not found with id: " + id));
-
-        existingLibrarian.setName(updatedLibrarian.getName());
-//        existingLibrarian.setEmployee(updatedLibrarian.getEmployee());
-
-        return librarianRepository.save(existingLibrarian);
+        return librarianService.updateLibrarian(id, updatedLibrarian);
     }
 
     @DeleteMapping("/{id}")
     public void deleteLibrarian(@PathVariable int id) {
-        librarianRepository.deleteById(id);
+        librarianService.deleteLibrarian(id);
     }
 }

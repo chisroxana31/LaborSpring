@@ -11,7 +11,7 @@ import Domain.Employee;
 import static Test.TestLibrary.*;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"map.project.demo", "Domain", "Repo", "Controller"})
+@ComponentScan(basePackages = {"map.project.demo", "Domain", "Repo", "Controller","Service"})
 @EntityScan("Domain")
 @EnableJpaRepositories("Repo")
 public class DemoApplication {

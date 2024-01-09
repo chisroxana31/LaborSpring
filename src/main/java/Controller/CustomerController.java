@@ -1,7 +1,7 @@
 package Controller;
 
 import Domain.Customer;
-import Repo.CustomerRepository;
+import Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,29 +12,22 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    private CustomerRepository customerRepository;
-
-    // Assuming you have a CustomerService injected for business logic
+    private CustomerService customerService;
 
     @GetMapping("/getAll")
     public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
+        return customerService.getAllCustomers();
     }
 
     @GetMapping("/{customerId}")
     public Customer getCustomerById(@PathVariable Long customerId) {
-        return customerRepository.findById(customerId).orElse(null);
+        return customerService.getCustomerById(customerId);
     }
 
     @PostMapping("/add")
     public void addCustomer(@RequestBody Customer customer) {
-        // You can add business logic in the service layer if needed
-        customerRepository.save(customer);
+        customerService.addCustomer(customer);
     }
 
-//    @GetMapping("/findByName/{name}")
-//    public List<Customer> getCustomersByName(@PathVariable String name) {
-//        return customerRepository.findByNameIgnoreCase(name);
-//    }
-
+    // Add additional mappings and methods if needed
 }
