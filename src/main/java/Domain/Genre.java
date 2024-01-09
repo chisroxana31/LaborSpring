@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @Getter
 @Table(name = "Genre")
-/*Aici trebuie modificat in functie de numele tabelului din baza de date*/
+
 public class Genre {
 
     @Id
