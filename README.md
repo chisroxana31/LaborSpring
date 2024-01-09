@@ -1,9 +1,9 @@
-# Library Spring Project
+# Library Management Project
 
 
 ## Introduction
 
-Welcome to the Library Spring Project! This comprehensive Spring Boot application is designed to efficiently manage and organize a library's operations through a robust RESTful service. Leveraging CRUD (Create, Read, Update, Delete) functionality, the project encompasses ten essential entities, each playing a crucial role in the seamless functioning of a modern library.
+Welcome to the Library Management Project! This comprehensive Spring Boot application is designed to efficiently manage and organize a library's operations through a robust RESTful service. Leveraging CRUD (Create, Read, Update, Delete) functionality, the project encompasses ten essential entities, each playing a crucial role in the seamless functioning of a modern library.
 
 ## Key Entities:
 
@@ -88,7 +88,7 @@ Focusing on library users, the Customer entity contains information about indivi
 - **CRUD Operations**: Utilizing Create, Read, Update, and Delete operations, the application ensures seamless management of library resources and entities.
 - **Efficient Library Operations**: From book borrowing to librarian management, the project aims to streamline various aspects of library operations.
 
-Whether you are a librarian managing the library's resources or a library user looking for information, the Library Spring Project provides a comprehensive and user-friendly solution to meet your needs. Dive into the world of organized and efficient library management with our Spring Boot application!
+Whether you are a librarian managing the library's resources or a library user looking for information, the Library Management Project provides a comprehensive and user-friendly solution to meet your needs. Dive into the world of organized and efficient library management with our Spring Boot application!
 
 
 
@@ -107,9 +107,9 @@ The project provides a RESTful API for managing entities. It follows the common 
 - **Method:** POST
 - **Endpoint:** `/api/employees/add`
 - **Body:**
-- 
+
   ![Local Image](documentation_images/add_employee.png)
-- 
+
 ## 2. Read (GET) - Retrieve Information about Authors (example)
 **Request:**
 - **Method:** GET
@@ -147,7 +147,7 @@ The project provides a RESTful API for managing entities. It follows the common 
 
 
   
-# Use Cases for Library Spring Project with JPA
+# Use Cases for Library Management Project with JPA
 
 ## 1. Library Resource Management
 **Use Case:** Librarians and administrators can efficiently manage and organize the library's vast collection of books, genres, and authors using the CRUD operations provided by the RESTful service.
